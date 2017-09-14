@@ -1,0 +1,16 @@
+<table class="table">
+<tbody>
+  <tr>
+    <!--
+    <td><button class="btn btn-xs" type="button"><a href="{{ url_for('assets.nics_add') }}">新增网卡</a></button></td>
+    <td><button class="btn btn-xs" type="button"><a href="{{ url_for('assets.nicroles_add') }}">新增网卡类型</a></button></td>
+    -->
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="{{ url_for('assets.nics') }}">网卡</a></li>
+      <li role="presentation"><a href="{{ url_for('assets.nicroles') }}">网卡类型</a></li>
+      <li role="presentation"><a href="{{ url_for('assets.nics_add') }}">新增网卡</a></li>
+      <li role="presentation"><a href="{{ url_for('assets.nicroles_add') }}">新增网卡类型</a></li>
+    </ul>
+  </tr>
+</tbody>
+</table>

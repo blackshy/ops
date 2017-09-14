@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Page Title{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/vendors_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>公司</th>
+      <th>联系人</th>
+      <th>手机</th>
+      <th>座机</th>
+      <th>邮箱</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for vendor in vendors %}
+      <tr>
+        <td>{{ vendor.company }}</td>
+        <td>{{ vendor.user }}</td>
+        <td>{{ vendor.mobile }}</td>
+        <td>{{ vendor.phone }}</td>
+        <td>{{ vendor.email }}</td>
+        <td>{{ vendor.description }}</td>
+        <td>{{ vendor.update_time }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+      <h4>运维管理系统</h4>
+      <div class="cover">
+        <!--
+        <h2><img class="img-circle" src="images/icon_face.jpg"/></h2>
+        -->
+        <b>{{ current_user.username }}</b>
+        <p>{{ current_user.role }}</p>
+      </div>
+      <ul class="sidenav animated fadeInUp">
+        <li><a class="withripple hover" href="{{ url_for('main.index') }}"><span class="glyphicon glyphicon-home" aria-hidden=true></span><span class="sidespan"> 首页</span></a></li>        
+        <li><a class="withripple" href="javascript:;"><span class="glyphicon glyphicon-inbox" aria-hidden=true></span><span class="sidespan"> 资产管理</span><i class="iright pull-right">&gt;</i></a>
+          <ul class="sidebar-dropdown">
+            <li><a href="javascript:;" class="withripple"> 物理资产<i class="iright pull-right">&gt;</i></a>
+              <ul class="sidebar-dropdown-l3">
+                <li><a href="{{ url_for('assets.physical_servers') }}" class="withripple"> 服务器</a></li>
+                <li><a href="{{ url_for('assets.physical_servers') }}" class="withripple"> 网络设备</a></li>
+                <li><a href="{{ url_for('assets.physical_servers') }}" class="withripple"> 存储设备</a></li>
+                <li><a href="{{ url_for('assets.regions') }}" class="withripple"> 机柜</a></li>
+                <li><a href="{{ url_for('assets.nics') }}" class="withripple"> 网络配件</a></li>
+                <li><a href="{{ url_for('assets.physical_servers') }}" class="withripple"> GPU配件</a></li>
+                <li><a href="{{ url_for('assets.disks') }}" class="withripple"> 存储配件</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:;" class="withripple"> 虚拟资产<i class="iright pull-right">&gt;</i></a>
+              <ul class="sidebar-dropdown-l3 dropdown-toggle">
+                <li><a href="{{ url_for('assets.physical_servers') }}" class="withripple"> 虚拟机</a></li>
+                <li><a href="{{ url_for('assets.ips') }}" class="withripple"> IP地址</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:;" class="withripple"> 配置管理<i class="iright pull-right">&gt;</i></a>
+              <ul class="sidebar-dropdown-l3">
+                <li><a href="{{ url_for('assets.operate_systems') }}" class="withripple"> 操作系统</a></li>
+                <li><a href="{{ url_for('assets.vendors') }}" class="withripple"> 供应商</a></li>
+                <li><a href="" class="withripple"> 合同</a></li>
+                <li><a href="" class="withripple"> 部门管理</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a class="withripple" href="javascript:;"><span class="glyphicon glyphicon-inbox" aria-hidden=true></span><span class="sidespan"> 资产管理</span><i class="iright pull-right">&gt;</i></a>
+          <ul class="sidebar-dropdown">
+            <li><a href="" class="withripple">UI设计列表</a></li>
+            <li><a href="" class="withripple">添加作品</a></li>
+          </ul>
+        </li>
+        <li><a class="withripple" href="javascript:;"><span class="glyphicon glyphicon-book" aria-hidden=true></span><span class="sidespan"> 故障知识库</span><i class="iright pull-right">&gt;</i></a>
+          <ul class="sidebar-dropdown">
+            <li><a href="" class="withripple">文章列表</a></li>
+            <li><a href="" class="withripple">添加WEB作品</a></li>
+          </ul>
+        </li>
+        <li><a class="withripple" href="javascript:;"><i class="icon icon-php"></i><span class="sidespan">PHP后台</span><i class="iright pull-right">&gt;</i></a>
+          <ul class="sidebar-dropdown">
+            <li><a href="" class="withripple">PHP项目</a></li>
+            <li><a href="" class="withripple">添加项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- 侧边栏 完-->
+  </div>
+</div>

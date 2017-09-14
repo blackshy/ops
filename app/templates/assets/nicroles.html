@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Page Title{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/nics_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>网卡类型</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for nicrole in nicroles %}
+    <tr>
+      <td>{{ nicrole.id }}</td>
+      <td>{{ nicrole.name }}</td>
+      <td>{{ nicrole.description }}</td>
+      <td>{{ nicrole.description }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

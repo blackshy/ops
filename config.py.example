@@ -1,0 +1,47 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    LOG_FILE = 'app.log'
+
+class DevelopmentConfig(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+
+class TestingConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'mysql://user:pass@127.0.0.1/dbname'
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    MAIL_SERVER = 'partner.outlook.cn'
+    MAIL_PORT = '587'
+    MAIL_USERNAME = 'no-reply@blackshy.com'
+    MAIL_PASSWORD = 'xxxxxxxxxxxx'
+    MAIL_USE_TLS = True
+    FLASKY_MAIL_SUBJECT_PREFIX = '[no-reply]'
+    MAIL_DEFAULT_SENDER = 'no-reply@blackshy.com'
+
+    WEIXIN_CORPID = 'xxxxxxxxxxxxxxxxxx'
+    WEIXIN_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    WEIXIN_SEND_URL = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token='
+    WEIXIN_GETTOKEN_URL = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
+
+    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+
+    SERVER_DETAIL_API_URL = 'http://system.bj.blackshy.com/server/serverdetail_api.php?ip='
+    SERVER_USER_API_URL = 'http://system.bj.blackshy.com/server/serverusers_api.php?ip='
+
+    ZBX_URL = "http://10.0.8.35/zabbix/api_jsonrpc.php"
+    ZBX_USER = "user"
+    ZBX_PASS = "pass"
+
+config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'production': ProductionConfig,
+    'default': DevelopmentConfig
+}

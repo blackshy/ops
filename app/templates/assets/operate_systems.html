@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Page Title{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/operate_systems_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>发行版</th>
+      <th>主版本</th>
+      <th>副版本</th>
+      <th>代号</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for operate_system in operate_systems %}
+    <tr>
+      <td>{{ operate_system.id }}</td>
+      <td>{{ operate_system.os_distribution }}</td>
+      <td>{{ operate_system.os_release_major }}</td>
+      <td>{{ operate_system.os_release_minor }}</td>
+      <td>{{ operate_system.os_release_code }}</td>
+      <td>{{ operate_system.description }}</td>
+      <td><a href="{{ url_for('assets.operate_systems_update', post_id=operate_system.id) }}">编辑</a>
+          <a href="{{ url_for('assets.operate_systems_delete', post_id=operate_system.id) }}">删除</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

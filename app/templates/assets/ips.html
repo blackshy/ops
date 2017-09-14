@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Page Title{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/ips_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>IP地址</th>
+      <th>子网掩码</th>
+      <th>网关</th>
+      <th>CIDR格式</th>
+      <th>状态</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ip in ips %}
+      <tr>
+        <td>{{ ip.ip }}</td>
+        <td>{{ ip.netmask }}</td>
+        <td>{{ ip.gateway }}</td>
+        <td>{{ ip.cidr }}</td>
+        <td>{{ ip.in_use }}</td>
+        <td>{{ ip.description }}</td>
+        <td>{{ ip.update_time }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

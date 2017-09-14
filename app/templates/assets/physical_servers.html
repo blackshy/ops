@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}物理服务器管理{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/physical_servers_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>资产号</th>
+      <th>主机名</th>
+      <th>系统</th>
+      <th>运维</th>
+      <th>开发</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in physical_servers %}
+    <tr>
+      <td>{{ p.asset_tag }}</td>
+      <td>{{ p.hostname }}</td>
+      {% if p.operate_system_physical_server %}
+        <td>{{ p.operate_system_physical_server.os_distribution }} - {{ p.operate_system_physical_server.os_release_major }}.{{ p.operate_system_physical_server.os_release_minor }}</td>
+      {% else %}
+        <td>None</td>
+      {% endif %}
+      <td>{{ p.opsers }}</td>
+      <td>{{ p.developers }}</td>
+      <td>{{ p.description }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

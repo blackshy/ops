@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Page Title{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/disks_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>SN</th>
+      <th>容量(GB)</th>
+      <th>使用状态</th>
+      <th>供应商</th>
+      <th>存储类型</th>
+      <th>接口类型</th>
+      <th>速率</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for disk in disks %}
+    <tr>
+      <td>{{ disk.id }}</td>
+      <td>{{ disk.sn }}</td>
+      <td>{{ disk.size }}</td>
+      <td>{{ disk.in_use }}</td>
+      <td>{{ disk.vendor.company }}</td>
+      <td>{{ disk.disk_role.storage_type }}</td>
+      <td>{{ disk.disk_role.plug_type }}</td>
+      <td>{{ disk.disk_role.speed }}</td>
+      <td>{{ disk.description }}</td>
+      <td>{{ disk.description }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

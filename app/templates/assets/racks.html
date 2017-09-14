@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}机柜配置信息管理{% endblock title %}
+{% block head %}
+{{ super() }}
+  <link href="/static/custom/css/assets.css" rel="stylesheet">
+{% endblock head %}
+
+{% block page_content %}
+{% include "assets/regions_head.html" %}
+<table class="table table-bordered table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>托管类型</th>
+      <th>地域</th>
+      <th>子区域</th>
+      <th>机柜编号</th>
+      <th>描述</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in racks %}
+      <tr>
+        <td>{{ p.regions.first().trusteeship }}</td>
+        <td>{{ p.regions.first().region }}</td>
+        {% if p.regions.first().sub_region %}
+          <td>{{ p.regions.first().sub_region }}</td>
+        {% else %}
+          <td>None</td>
+        {% endif %}
+        <td>{{ p.rack }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.update_time }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock page_content %}

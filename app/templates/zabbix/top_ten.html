@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}虚拟机负载排序{% endblock title %}
+{% block main %}
+    <table class="table table-hover table table-bordered">
+      <div class="top-pad">
+        {% include 'zabbix/top.html' %}
+      </div>
+      <caption>{{ result['stime'] }} --- {{ result['etime'] }} 虚拟机数量：{{ result['data']|length }}</caption>
+      <thead>
+        <tr>
+          <th>IP</th>
+          <th>最大负载</th>
+          <th>平均负载</th>
+          <th>宿主机</th>
+          <th>机器描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each_server in result['data'] %}
+          <tr>
+            <td>{{ each_server['server'] }}</td>
+            <td>{{ each_server['max'] }}</td>
+            <td>{{ each_server['avg'] }}</td>
+            <td>{{ each_server['host'] }}</td>
+            <td>{{ each_server['desc'] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock main %}
